@@ -10,10 +10,10 @@ interface IProps {
 }
 
 export const getStaticProps = async () => {
+  try {
   const response = await fetch(`${process.env.API_HOST}/socials`);
   const data = await response.json();
-
-  try {
+ 
     return data
       ? {
         props: {
@@ -31,8 +31,6 @@ export const getStaticProps = async () => {
       }
     }
   }
-
-
 };
 
 const Home: FC<IProps> = ({ socials }) => (
